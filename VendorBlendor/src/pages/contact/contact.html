@@ -1,17 +1,72 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Vendor Details
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+<ion-content padding>
+ <table>
+   <tr class="topalign">
+     <td class="width-lg">
+        <h3>Shop with a Registered Vendor</h3>
+        <p>
+          Browse the list below to find trusted local vendor you can shop with. 
+        </p>
+        <p class="italics">
+          Network Marketing is the BIG wave of the future.  It's taking the place 
+          of franchising, which now requires too much capital for the average person.
+          ~ Jim Rohn, Business Philospher
+        </p>
+      </td>
+    <td class="width-sm">
+      <img src="/assets/imgs/shoplocalmashup.jpg" class="ion-float-right" style="height: 150px; width: 150px;"/>
+    </td>
+   </tr>
+ </table>
+ 
+ <hr margin-left />
+
+ <!-- List of Vendors -->
+<ion-item *ngFor="let thisVendor of loadVendors()">
+  <ion-label>
+      <table>
+        <tr class="topalign">
+          <td class="width-xsm">
+            <ion-avatar item-start >
+              <img src="{{thisVendor.image}}">
+            </ion-avatar> 
+          </td>
+          <td class="width-xlg">
+            <p margin-bottom>
+              <span class="headertext">{{thisVendor.vendorName}}</span><br/>
+              <span class="subheadertext italics">provided by {{thisVendor.providedBy}}</span>
+            </p>
+            <p>
+              <ion-icon name="mail" ></ion-icon>
+              {{thisVendor.email}}           
+          </p>
+          <p>
+            <ion-icon name="call"></ion-icon>
+            {{thisVendor.phone}}     
+          </p>
+          <p>
+            <ion-icon name="star" ></ion-icon>
+            <a href="http://www.kerryfaine.com">{{thisVendor.website}}</a>
+          </p>
+          <p>
+            <ion-icon name="share" ></ion-icon>
+            <a href="#" (click)="shareVendor(thisVendor)">Share vendor with a friend</a>
+          </p>
+          </td>
+        </tr>
+      </table>
+  </ion-label>
+</ion-item>
+
+<ion-fab bottom right>
+  <button (click)="addVendor()" ion-fab mini><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+
 </ion-content>

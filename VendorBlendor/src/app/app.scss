@@ -14,3 +14,36 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+tr.topalign {
+    vertical-align: top;
+}
+
+td.width-xsm{
+    width: 10%
+}
+
+td.width-sm {
+    width: 30%;
+}
+
+td.width-lg {
+    width: 70%;
+}
+
+td.width-xlg {
+    width: 90%;
+}
+
+.italics {
+    font-style: italic;
+}
+
+.headertext {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.subheadertext {
+    font-size: smaller; 
+}

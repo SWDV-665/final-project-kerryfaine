@@ -1,17 +1,72 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Event Details</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <table>
+    <tr class="topalign">
+      <td class="width-lg">
+         <h3>Shop a Local Event</h3>
+         <p>
+           A great way to be introduced to a new product is to spend an afternoon at a show. 
+           <span class="subheadertext italics">(slide event item to view more)</span>
+         </p>
+         <p class="italics">
+          A satisfied customer is the best business strategy of all.
+          ~ Michael LeBoeuf, Business Author
+         </p>
+       </td>
+     <td class="width-sm">
+       <img src="/assets/imgs/letsshop.png" style="padding-top: 10px; width: 250px;float: right;"/>
+     </td>
+    </tr>
+  </table>
+
+<hr margin-left/>
+
+<!-- List of Events -->
+<ion-list>
+  <ion-item-sliding *ngFor="let thisEvent of loadEvents()">
+    <ion-item>
+      <p margin-bottom>
+        <span class="headertext">{{thisEvent.eventName}}</span><br/>
+        <span class="subheadertext italics">{{thisEvent.eventdate}} {{thisEvent.startTime}} to{{thisEvent.endTime}}</span>
+      </p>
+      <p>
+        {{thisEvent.eventAddr1}}<br/>
+        {{thisEvent.eventAddr2}}
+      </p>
+    </ion-item>
+    <ion-item-options>
+
+      <button (click)='viewVendors(thisEvent)' class="subheadertext" ion-button color="primary" icon-start >
+        <ion-icon name="list">
+          Vendors
+        </ion-icon>
+      </button>
+
+      <button (click)='addMe(thisEvent)' class="subheadertext" ion-button color="secondary" icon-start>
+        <ion-icon name="add">
+          Add
+        </ion-icon>
+      </button>
+
+      <button (click)='shareEvent(thisEvent)' class="subheadertext"  ion-button color="dark" icon-start>
+        <ion-icon name="share">
+          Share
+        </ion-icon>
+      </button>
+
+
+    </ion-item-options>
+  </ion-item-sliding>
+
+</ion-list> 
+
+ <ion-fab bottom right>
+  <button (click)="addEvent()" ion-fab mini><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+  
 </ion-content>
